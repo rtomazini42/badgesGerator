@@ -6,6 +6,7 @@
 
 body{
     background-image: url("fundo.jpg");
+    height: 100vh;
 }
 
 .conteudo {
@@ -17,17 +18,97 @@ body{
     margin-right: 15%;
     padding-top: 1%;
     padding-bottom: 5%;
-    padding-left: 4%;
+    padding-left: 10%;
+    padding-right: 10%;
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.conteudo a{
-    color:blue;
+.input-container{ 
+    display: flex;
+    /* padding: 5px; */
+    align-items: center;
+    justify-content: space-around;
 }
 
-.conteudo input{
+.input-field{
+    margin: 5px;
+    width: 100%;
+    padding: 15px;
+    height: 10;
+    background-color: #555555;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-size: 20px;
+}
+
+::placeholder{
+    color: rgba(255, 255, 255, 0.479);
+    font-size: 20px;
+}
+
+.input-colors-container{
+    display: flex;
+    padding: 5px;
+    align-items: center;
+}
+
+.color-field{
+    height: 10px;
+    margin: 15px;
+    padding: 15px;
+    border-style: solid;
+    border-radius: 20px;
+    border-color: #1E90FF;
+    background-color: #555555;
+    color: white;
+    font-size: 20px;
+    
+}
+
+a:link {
+    color: #1E90FF;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+a:visited{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.button-container{
+    margin-top: 10px;
+}
+
+
+.button{
+    background-color: #555555;
+    text-align: center;
+    padding: 15px 32px;
+    border-style: solid;
+    border-radius: 20px;
+    border-color: #1E90FF;
+    color: white;
+    font-size: 20px;
+}
+
+.button:hover{
+    cursor: pointer;
+}
+
+.badge-img-container{
+    margin: 10px;
+}
+
+.badge-img{
+    width:150px;
+    height: 70px;
+}
+
+/* .conteudo input{
     border-radius: 20px;
     font-size: large;
-
-}
+} */
