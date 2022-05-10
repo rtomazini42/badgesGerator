@@ -48,7 +48,7 @@
                     return;
                 }
                 let badge = criaBadge(texto,cor,logo,corLogo,estilo);
-                res="<p>Copie o link no seu arquivo github:</p> <p>!(" + badge + ")</p>" +`<br></br><img src="${badge}" alt="meu Badge"><br></br><button onclick="recarrega()">Novo Badge</button>`;
+                res="<p>Copie o link no seu arquivo github:</p> <p>![Descrição adicional opcional](" + badge + ")</p>" +`<br></br><img src="${badge}" alt="meu Badge"><br></br><button onclick="recarrega()">Novo Badge</button>`;
                 let resultado = document.getElementById("resultado")
                 resultado.innerHTML = res;         
                 
