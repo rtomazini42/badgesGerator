@@ -1,66 +1,125 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="utf-8">
-        <title>Badge Gerator</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <div class="conteudo">   
-            <h1>Gerador de Badge</h1>  
-            <label>Texto</label>
-            <br></br>
-            <input type="text" id="texto" name="texto"><br><br>
-            <label>Cor</label>
-            <br></br>
-            <input id="cor" type="color">
-            <br></br>
-            <label>Logo</label>
-            <br></br>
-            <input type="text" id="logo" name="logo"><br><br>
-            <a href="https://simpleicons.org/">Caso não saiba o nome da logo,procure neste link</a>
-            <br></br>
-            <label>Cor da Logo</label>
-            <br></br>
-            <input id="corLogo" type="color">
-            <br></br>
-            <button onclick="gerar()">Criar</button>
+<head>
+    <meta charset="utf-8">
+    <title>Badge Generator</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="coloris.css" />
+</head>
+<body>
+    <div class="conteudo">   
+
+        <h1>Gerador de Badges Personalizadas</h1>          
+
+            <div class="input-container">
+                <h2>Texto</h2>
+                <input 
+                    type="text" 
+                    id="texto" 
+                    name="texto" 
+                    class="input-field"
+                    placeholder="Texto a ser exibido"
+                />
+            </div>
+
+            <div class="input-colors-container">
+                <h2>Cor</h2>
+                <input 
+                    type="text" 
+                    id="cor" 
+                    class="color-field coloris"
+                    value="#1E90FF"
+                />
+            </div>
+
+            <div class="input-container">
+                <h2>Logo</h2>
+                <input type="text" id="logo" name="logo" class="input-field">
+                <a href="https://simpleicons.org/" target="_blank">
+                    Caso não saiba o nome da logo,clique aqui.
+                </a>
+            </div>
+            
+            <div class="input-colors-container">
+                <h2>Cor do logo</h2>
+                <input 
+                    type="text" 
+                    id="corLogo" 
+                    class="color-field coloris"
+                    value="#1E90FF"
+                />
+            </div>
+
+            <div class="button-container">
+                <button class="button" onclick="gerar()"> Criar </button>
+            </div>
+        
             <div id="resultado">
                 <p>O resultado aparece aqui</p>
             </div>
-        
-        </div>
-        <script>
-            function criaBadge(texto,cor,logo,corLogo,estilo){
-                cor = cor.value.replace(/#/, '');
-                corLogo =corLogo.value.replace(/#/, '');
-                return `https://img.shields.io/badge/-${texto.value}-${cor}?logo=${logo.value}&logoColor=${corLogo}&style=flat`
-            } 
+    
+    </div>
 
-            function gerar(){
-                let texto = document.getElementById("texto");
-                let cor = document.getElementById("cor");
-                let logo = document.getElementById("logo");
-                let corLogo = document.getElementById("corLogo");
-                let estilo = document.getElementsByClassName("estilo");
-                if(texto.value == "" || logo.value =="" || estilo.value ==""){
-                    alert("Preencha todos os campos");
-                    return;
-                }
-                let badge = criaBadge(texto,cor,logo,corLogo,estilo);
-                res="<p>Copie o link no seu arquivo github:</p> <p>![Descrição adicional opcional](" + badge + ")</p>" +`<br></br><img src="${badge}" alt="meu Badge"><br></br><button onclick="recarrega()">Novo Badge</button>`;
-                let resultado = document.getElementById("resultado")
-                resultado.innerHTML = res;         
-                
-                
-            }
+    <script src="coloris.js"></script>
 
-            function recarrega(){
-                window.location.reload();
+    <script>
+        function criaBadge(texto,cor,logo,corLogo,estilo){
+            cor = cor.value.replace(/#/, '');
+            corLogo =corLogo.value.replace(/#/, '');
+            return `https://img.shields.io/badge/-${texto.value}-${cor}?logo=${logo.value}&logoColor=${corLogo}&style=flat`
+        } 
+
+        Coloris({
+            el: '.coloris',
+            theme: 'large',
+            themeMode: 'dark',
+            formatToggle: true,
+            alpha: false,
+            swatches: [
+                '#264653',
+                '#2a9d8f',
+                '#e9c46a',
+                '#f4a261',
+                '#e76f51',
+                '#d62828',
+                '#023e8a',
+                '#0077b6',
+                '#0096c7',
+                '#00b4d8',
+                '#48cae4',
+            ],
+        });
+
+        function gerar(){
+            let texto = document.getElementById("texto");
+            let cor = document.getElementById("cor");
+            let logo = document.getElementById("logo");
+            let corLogo = document.getElementById("corLogo");
+            let estilo = document.getElementsByClassName("estilo");
+            if(texto.value == "" || logo.value =="" || estilo.value ==""){
+                alert("Preencha todos os campos");
+                return;
             }
+            let badge = criaBadge(texto,cor,logo,corLogo,estilo);
+            res="<p>Copie o link no seu arquivo github:</p> <p>![Descrição adicional opcional](" + badge + ")</p>" +
+            `<div class="badge-img-container">
+                <img class="badge-img" src="${badge}" alt="meu Badge">
+            </div>
+            <div class="button-container">
+                <button class="button" onclick="recarrega()">
+                Criar Novo Badge
+                </button>
+            </div>`;
+            let resultado = document.getElementById("resultado")
+            resultado.innerHTML = res;         
             
+        }
 
+        function recarrega(){
+            window.location.reload();
+        }
+        
+    </script>
 
-        </script>
-    </body>
+</body>
 </html>
